@@ -24,7 +24,29 @@ $(document).ready(function() {
 });
 
 // Retrieve tasks and nextId from localStorage
-let taskList = JSON.parse(localStorage.getItem("tasks"));
+let submitButton = document.getElementById('openModalBtn');
+submitButton.addEventListener('click', function(event){
+    event.preventDefault()
+    const taskName = document.getElementById('taskName');
+    const date = document.getElementById('dueDate');
+    const descriptionTask = document.getElementById('description');
+    const taskData = {
+        taskName: taskName.value,
+        date: date.value,
+        description: descriptionTask.value
+    };
+let allTasks = JSON.parse(localStorage.getItem('newTask'));
+if (!allTasks) {
+    allTasks = []
+}
+allTasks.push(taskData)
+console.log('taskName', taskName.value);
+console.log('dueDate', date.value);
+console.log('description', descriptionTask.value);
+localStorage.setItem('newTask', JSON.stringify(allTasks));
+
+})
+let taskList = JSON.parse(localStorage.getItem("taskForm"));
 let nextId = JSON.parse(localStorage.getItem("nextId"));
 
 // Todo: create a function to generate a unique task id
