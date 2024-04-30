@@ -51,32 +51,44 @@ let nextId = JSON.parse(localStorage.getItem("nextId"));
 
 // Todo: create a function to generate a unique task id
 function generateTaskId() {
-console.log ('generateTaskId');
+
 }
 
 // Todo: create a function to create a task card
-function createTaskCard(task) {
-    console.log ('createTaskCard');
+function createTaskCard(taskCard) {
+    const taskInfo = $('<div>')
+    .addClass('card project-card draggable my-3')
+    .attr('data-project-id', taskCard.id);
+  const cardHeader = $('<div>').addClass('card-header h4').text(taskData.taskName);
+  const cardBody = $('<div>').addClass('card-body');
+  const cardDescription = $('<p>').addClass('card-text').text(taskData.description);
+  const cardDueDate = $('<p>').addClass('card-text').text(taskData.date);
+  const cardDeleteBtn = $('<button>')
+    .addClass('btn btn-danger delete')
+    .text('Delete')
+    .attr('data-project-id', taskCard.id);
+  cardDeleteBtn.on('click', handleDeleteProject);
+    
 }
 
 // Todo: create a function to render the task list and make cards draggable
 function renderTaskList() {
-    console.log ('renderTaskList');
+    
 }
 
 // Todo: create a function to handle adding a new task
 function handleAddTask(event){
-    console.log ('handleAddTask');
+    
 }
 
 // Todo: create a function to handle deleting a task
 function handleDeleteTask(event){
-    console.log ('handleDeleteTask');
+    
 }
 
 // Todo: create a function to handle dropping a task into a new status lane
 function handleDrop(event, ui) {
-    console.log ('handleDrop');
+    
 }
 
 // Todo: when the page loads, render the task list, add event listeners, make lanes droppable, and make the due date field a date picker
