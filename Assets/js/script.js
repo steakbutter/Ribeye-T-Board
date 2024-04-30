@@ -24,7 +24,7 @@ $(document).ready(function() {
 });
 
 // Retrieve tasks and nextId from localStorage
-let submitButton = document.getElementById('openModalBtn');
+let submitButton = document.getElementById('taskButton');
 submitButton.addEventListener('click', function(event){
     event.preventDefault()
     const taskName = document.getElementById('taskName');
