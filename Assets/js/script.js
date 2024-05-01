@@ -61,10 +61,10 @@ localStorage.setItem('tasks', JSON.stringify(taskList));
 console.log('New task ID generated:', newTaskId);
 
 // Todo: create a function to create a task card
-function createTaskCard(taskArray) {
+function createTaskCard(taskId) {
     const taskInfo = $('<div>')
     .addClass('card project-card draggable my-3')
-    .attr('data-project-id', taskArray);
+    .attr('data-project-id', taskId);
   const cardHeader = $('<div>').addClass('card-header h4').text(taskData.taskName);
   const cardBody = $('<div>').addClass('card-body');
   const cardDescription = $('<p>').addClass('card-text').text(taskData.description);

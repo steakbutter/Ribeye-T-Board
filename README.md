@@ -17,7 +17,7 @@ https://steakbutter.github.io/Ribeye-T-Board/
 Fill in task name and due date of the task.
 Organize tasks due to their status. 
 ![alt text](<Assets/Screenshot 2024-04-29 at 5.39.22 p.m..png>)
-
+![alt text](<Assets/localstorage and ID.png>)
 ## Credits
 
 https://blog.logrocket.com/localstorage-javascript-complete-guide/#:~:text=The%20setItem()%20method%20allows,the%20value%20attached%20to%20it.
