@@ -16,7 +16,7 @@ $(document).ready(function() {
     $('#taskForm').submit(function(event) {
       event.preventDefault();
       // Add your code here to capture task details and handle form submission
-    // You can use localStorage or send the data to a server for processing
+    // You can use localStorage
     // Clear the form fields after adding the task
     $('#taskForm')[0].reset();
     $('#taskModal').css('display', 'none');
@@ -40,25 +40,31 @@ if (!allTasks) {
     allTasks = []
 }
 allTasks.push(taskData)
-console.log('taskName', taskName.value);
-console.log('dueDate', date.value);
-console.log('description', descriptionTask.value);
-localStorage.setItem('newTask', JSON.stringify(allTasks));
+  console.log('Task Name:', taskName.value);
+  console.log('Due Date:', date.value);
+  console.log('Description:', descriptionTask.value);
+  localStorage.setItem('newTask', JSON.stringify(allTasks));
 
 })
-let taskList = JSON.parse(localStorage.getItem("taskForm"));
+let taskList = JSON.parse(localStorage.getItem("taskForm")) || [];
 let nextId = JSON.parse(localStorage.getItem("nextId"));
 
 // Todo: create a function to generate a unique task id
 function generateTaskId() {
+let taskId = Date.now(); 
+return taskId;
 
 }
+let newTaskId = generateTaskId();
+taskList.push({ id: newTaskId, taskName: 'New Task'});
+localStorage.setItem('tasks', JSON.stringify(taskList));
+console.log('New task ID generated:', newTaskId);
 
 // Todo: create a function to create a task card
-function createTaskCard(taskCard) {
+function createTaskCard(taskArray) {
     const taskInfo = $('<div>')
     .addClass('card project-card draggable my-3')
-    .attr('data-project-id', taskCard.id);
+    .attr('data-project-id', taskArray);
   const cardHeader = $('<div>').addClass('card-header h4').text(taskData.taskName);
   const cardBody = $('<div>').addClass('card-body');
   const cardDescription = $('<p>').addClass('card-text').text(taskData.description);
@@ -67,7 +73,7 @@ function createTaskCard(taskCard) {
     .addClass('btn btn-danger delete')
     .text('Delete')
     .attr('data-project-id', taskCard.id);
-  cardDeleteBtn.on('click', handleDeleteProject);
+  cardDeleteBtn.on('click', handleDeleteTask);
     
 }
 
